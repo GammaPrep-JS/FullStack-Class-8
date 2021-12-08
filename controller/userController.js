@@ -16,7 +16,7 @@ exports.login = (req, res)=>{
     let user = new User(req.body)
     user.login().then((result)=>{
         console.log(result)
-        req.session.user = {username: user.username}
+        req.session.user = {username: user.data.username}
         req.session.save(()=>res.redirect('/'))
     }).catch(err=>{
         console.log(err)
